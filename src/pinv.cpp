@@ -20,9 +20,18 @@ using Rcpp::as;
 using Rcpp::NumericMatrix;
 using Rcpp::wrap;
 
-// C++ version of MASS::ginv
-// For complete equivalence within rounding errors, set 
-// tol = sqrt(.Machine$double.eps)
+//' Matrix pseudoinverse
+//' 
+//' Compute the Moore-Penrose pseudoinverse using the SVD approximation.
+//' 
+//' To use the same tolerance as \code{MASS::ginv}, set the tolerance parameter 
+//' to \code{sqrt(.Machine$double.eps)}.
+//' 
+//' @param V A numeric matrix
+//' @param tol A relative tolerance for detecting zero singular values
+//' 
+//' @value The Moore-Penrose pseudoinverse for \code{V}.
+//' 
 //' @export
 // [[Rcpp::export]]
 MatrixXd pinv(MatrixXd V, double tol = 1.e-6) {
