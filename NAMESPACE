@@ -1,0 +1,4 @@
+useDynLib(QGenTools)
+import(RcppEigen)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
