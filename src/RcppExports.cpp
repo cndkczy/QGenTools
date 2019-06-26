@@ -6,55 +6,97 @@
 
 using namespace Rcpp;
 
-// rcppeigen_hello_world
-Eigen::MatrixXd rcppeigen_hello_world();
-RcppExport SEXP _QGenTools_rcppeigen_hello_world() {
+// hudson_fst
+double hudson_fst(NumericMatrix X1, NumericMatrix X2);
+RcppExport SEXP _QGenTools_hudson_fst(SEXP X1SEXP, SEXP X2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcppeigen_hello_world());
+    Rcpp::traits::input_parameter< NumericMatrix >::type X1(X1SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X2(X2SEXP);
+    rcpp_result_gen = Rcpp::wrap(hudson_fst(X1, X2));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcppeigen_outerproduct
-Eigen::MatrixXd rcppeigen_outerproduct(const Eigen::VectorXd& x);
-RcppExport SEXP _QGenTools_rcppeigen_outerproduct(SEXP xSEXP) {
+// ibs
+NumericMatrix ibs(NumericMatrix X);
+RcppExport SEXP _QGenTools_ibs(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcppeigen_outerproduct(x));
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(ibs(X));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcppeigen_innerproduct
-double rcppeigen_innerproduct(const Eigen::VectorXd& x);
-RcppExport SEXP _QGenTools_rcppeigen_innerproduct(SEXP xSEXP) {
+// r2
+DataFrame r2(NumericMatrix X);
+RcppExport SEXP _QGenTools_r2(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcppeigen_innerproduct(x));
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(r2(X));
     return rcpp_result_gen;
 END_RCPP
 }
-// rcppeigen_bothproducts
-Rcpp::List rcppeigen_bothproducts(const Eigen::VectorXd& x);
-RcppExport SEXP _QGenTools_rcppeigen_bothproducts(SEXP xSEXP) {
+// r2s
+DataFrame r2s(NumericMatrix X, NumericMatrix st);
+RcppExport SEXP _QGenTools_r2s(SEXP XSEXP, SEXP stSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::VectorXd& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcppeigen_bothproducts(x));
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type st(stSEXP);
+    rcpp_result_gen = Rcpp::wrap(r2s(X, st));
+    return rcpp_result_gen;
+END_RCPP
+}
+// r2v
+DataFrame r2v(NumericMatrix X, NumericMatrix V);
+RcppExport SEXP _QGenTools_r2v(SEXP XSEXP, SEXP VSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type V(VSEXP);
+    rcpp_result_gen = Rcpp::wrap(r2v(X, V));
+    return rcpp_result_gen;
+END_RCPP
+}
+// r2vs
+DataFrame r2vs(NumericMatrix X, NumericMatrix V, NumericMatrix st);
+RcppExport SEXP _QGenTools_r2vs(SEXP XSEXP, SEXP VSEXP, SEXP stSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type V(VSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type st(stSEXP);
+    rcpp_result_gen = Rcpp::wrap(r2vs(X, V, st));
+    return rcpp_result_gen;
+END_RCPP
+}
+// realized_ab
+NumericMatrix realized_ab(NumericMatrix X);
+RcppExport SEXP _QGenTools_realized_ab(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(realized_ab(X));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_QGenTools_rcppeigen_hello_world", (DL_FUNC) &_QGenTools_rcppeigen_hello_world, 0},
-    {"_QGenTools_rcppeigen_outerproduct", (DL_FUNC) &_QGenTools_rcppeigen_outerproduct, 1},
-    {"_QGenTools_rcppeigen_innerproduct", (DL_FUNC) &_QGenTools_rcppeigen_innerproduct, 1},
-    {"_QGenTools_rcppeigen_bothproducts", (DL_FUNC) &_QGenTools_rcppeigen_bothproducts, 1},
+    {"_QGenTools_hudson_fst", (DL_FUNC) &_QGenTools_hudson_fst, 2},
+    {"_QGenTools_ibs", (DL_FUNC) &_QGenTools_ibs, 1},
+    {"_QGenTools_r2", (DL_FUNC) &_QGenTools_r2, 1},
+    {"_QGenTools_r2s", (DL_FUNC) &_QGenTools_r2s, 2},
+    {"_QGenTools_r2v", (DL_FUNC) &_QGenTools_r2v, 2},
+    {"_QGenTools_r2vs", (DL_FUNC) &_QGenTools_r2vs, 3},
+    {"_QGenTools_realized_ab", (DL_FUNC) &_QGenTools_realized_ab, 1},
     {NULL, NULL, 0}
 };
 

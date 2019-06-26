@@ -21,7 +21,7 @@ using Rcpp::wrap;
 
 //' @export
 // [[Rcpp::export]]
-MatrixXd ibs(NumericMatrix X) {
+NumericMatrix ibs(NumericMatrix X) {
   MatrixXd G(as<MatrixXd>(X));
   G *= 0.5;
   int r(G.rows()), c(G.cols());
@@ -31,5 +31,5 @@ MatrixXd ibs(NumericMatrix X) {
   MatrixXd G2G2t(MatrixXd(r, r).setZero().selfadjointView<Lower>().rankUpdate(G2));
   
   // Calculate identity-by-state
-  return (1/double(c))*(GGt + G2G2t);
+  return wrap((1/double(c))*(GGt + G2G2t));
 }
