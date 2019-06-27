@@ -22,6 +22,20 @@ using Rcpp::NumericVector;
 using Rcpp::NumericMatrix;
 using Rcpp::wrap;
 
+//' Correlation between loci.
+//' 
+//' Calculates the correlation (\eqn{r^2}) between marker loci within a population.
+//' 
+//' @param X An \eqn{n} x \eqn{m} numeric matrix of allelic dosages. The matrix must 
+//'   have column names for labelling correlations in the output.
+//' 
+//' @details Elements of \code{X} should be in the interval \eqn{[0,2]}. This 
+//'   computes the traditional \eqn{r^2} measure of linkage disequilibrium 
+//'   between pairs of marker loci.
+//' 
+//' @return A dataframe with \eqn{m(m-1)/2} rows containing pairwise correlations
+//'   between all possible pairs of markers in \code{X}.
+//' 
 //' @export
 // [[Rcpp::export]]
 DataFrame r2(NumericMatrix X) {

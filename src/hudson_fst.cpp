@@ -21,6 +21,27 @@ using Rcpp::NumericVector;
 using Rcpp::NumericMatrix;
 using Rcpp::wrap;
 
+//' Compute \eqn{F_ST} between two subpopulations.
+//' 
+//' Calculates Hudson's \eqn{F_ST} across genetic marker(s) for two subpopulations.
+//' 
+//' @param X1 A \eqn{n_1} x \eqn{m} numeric matrix of allelic dosages for one 
+//'   subpopulation.
+//' @param X2 A \eqn{n_2} x \eqn{m} numeric matrix of allelic dosages for a 
+//'   different subpopulation.
+//'   
+//' @details The entries of \code{X1} and \code{X2} should be in the interval 
+//'   \eqn{[0,2]}. This function implements the recommended Hudson's \eqn{F_ST} 
+//'   estimator (equation 5) from the reference. When \eqn{m>1}, the function uses 
+//'   the recommended ratio of averages approach for combining estimates of 
+//'   \eqn{F_ST} across multiple markers.
+//' 
+//' @return A single numeric estimate for \eqn{F_ST} between two subpopulations.
+//' 
+//' @references Bhatia \emph{et al.} (2013) Estimating and interpreting F_ST: The 
+//'   impact of rare variants. \emph{Genome Research}, \strong{23}\emph{(9)}: 
+//'   1514-21.
+//' 
 //' @export
 // [[Rcpp::export]]
 double hudson_fst(NumericMatrix X1, NumericMatrix X2) {

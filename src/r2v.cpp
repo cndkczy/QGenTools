@@ -25,6 +25,27 @@ using Rcpp::NumericVector;
 using Rcpp::NumericMatrix;
 using Rcpp::wrap;
 
+//' Correlation between loci.
+//' 
+//' Calculates the kinship corrected correlation (\eqn{r_V^2}) between marker 
+//'   loci within a population.
+//' 
+//' @param X An \eqn{n} x \eqn{m} numeric matrix of allelic dosages. The matrix must 
+//'   have column names for labelling correlations in the output.
+//' @param V An \eqn{n} x \eqn{n} numeric matrix of realized genetic relationships.
+//' 
+//' @details Elements of \code{X} should be in the interval \eqn{[0,2]}. \code{r2v} 
+//'   computes the Moore-Penrose pseudoinverse of \code{V} on demand, so singular 
+//'   \code{V} are permitted. This function calculates the kinship corrected 
+//'   correlation (\eqn{r_V^2}) between marker loci (equation 2 of the reference).
+//' 
+//' @return A dataframe with \eqn{m(m-1)/2} rows containing pairwise correlations
+//'   between all possible pairs of markers in \code{X}.
+//'
+//' @references Mangin \emph{et al.} (2011) Novel measures of linkage disequilibrium
+//'   that correct the bias due to population structure and relatedness. 
+//'   \emph{Heredity}, \strong{108}\emph{(3)}: 285-91.
+//'
 //' @export
 // [[Rcpp::export]]
 DataFrame r2v(NumericMatrix X, NumericMatrix V) {
