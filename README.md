@@ -11,7 +11,7 @@ These functions are written and updated as necessary for my own research purpose
 Please note that this package depends on the [FastMath](<https://github.com/amkusmec/FastMath>) package for reimplementations of commonly used mathematical functions.
 
 ```
-install.packages(c("devtools", "Rcpp", "RcppEigen"))
+install.packages(c("devtools", "Rcpp", "RcppEigen", "mgcv"))
 devtools::install_github("amkusmec/FastMath")
 devtools::install_github("amkusmec/QGenTools")
 ```

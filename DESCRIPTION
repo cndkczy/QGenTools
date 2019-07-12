@@ -1,12 +1,12 @@
 Package: QGenTools
 Type: Package
 Title: Efficient tools for quantitative genetics analyses
-Version: 1.0
+Version: 1.1
 Date: 2019-06-25
 Author: Aaron Kusmec
 Maintainer: Aaron Kusmec <amkusmec@iastate.edu>
 Description: More about what it does (maybe more than one line)
 License: GNU GPL v3.0
-Imports: Rcpp (>= 1.0.1), RcppEigen (>= 0.3.3.5.0), FastMath
+Imports: Rcpp (>= 1.0.1), RcppEigen (>= 0.3.3.5.0), FastMath, mgcv
 LinkingTo: Rcpp, RcppEigen, FastMath
 RoxygenNote: 6.1.1
