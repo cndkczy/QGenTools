@@ -43,18 +43,21 @@ NumericMatrix realized_ab(NumericMatrix X) {
   int r(G.rows()), c(G.cols());
   
   // Calculate allele frequencies
-  VectorXd freqs(G.colwise().sum()/double(r));
-  VectorXd sd((0.5*freqs.array()*(2.0 - freqs.array())).sqrt());
-  
-  // Center and standardize the marker matrix
+  VectorXd freqs(G.colwise().sum()/(2*double(r)));
+  double sd(0);
   for (size_t i = 0; i < c; ++i)
-    G.col(i) = (G.col(i).array() - freqs(i))/sd(i);
+    sd = sd + freqs(i)*(1 - freqs(i));
+  sd = 2*(sd/double(c));
+  
+  // Center the marker matrix
+  for (size_t i = 0; i < c; ++i)
+    G.col(i) = (G.col(i).array() - 2*freqs(i));
   
   // Form the cross product
   MatrixXd GGt(G*G.transpose());
   
   // Realized AB matrix
-  NumericMatrix AB(wrap((1/double(c))*GGt));
+  NumericMatrix AB(wrap(GGt/sd/double(c)));
   rownames(AB) = rownames(X);
   colnames(AB) = rownames(X);
   
