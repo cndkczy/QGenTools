@@ -14,7 +14,7 @@ Please note that this package depends on the [FastMath](<https://github.com/amku
 install.packages(c("devtools", "Rcpp", "RcppEigen", "mgcv"))
 devtools::install_github("amkusmec/FastMath")
 devtools::install_github("amkusmec/QGenTools")
-note: Rcpp v.1.0.2 and higher is required to finish installation of FastMath. Currently CRAN only provide earlier version.
+note: Rcpp v.1.0.2 and higher is required to finish installation of FastMath. Currently CRAN only provides earlier version.
 ```
 
 ### Performance
